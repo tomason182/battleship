@@ -1,7 +1,8 @@
-class GameBoard {
-    constructor() {
-
+class Gameboard {
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
     }
 }
 
-export {GameBoard}
+export {Gameboard}
