@@ -1,4 +1,5 @@
-import {Gameboard} from './gameboard.js';
+import { Gameboard } from './gameboard.js';
+import { Ship } from "./ships.js";
 
 
 test('Should be an instance of the class', () => {
@@ -12,5 +13,7 @@ test('Should have a height and a width', () => {
 });
 
 test('Should place ships at specific coordinates', () => {
-    
+    const ship = new Ship(4);
+    const gameboard = new Gameboard(10, 10);
+    expect(gameboard.placeShip(2, 3)).toBe(true);
 })
