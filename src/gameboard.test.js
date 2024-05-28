@@ -55,4 +55,17 @@ test('Should reject overlapping ships', () => {
     expect(gameboard.placeShip(shipOne)).toBe(true);
     expect(gameboard.placeShip(shipTwo)).toBe(false);
     expect(board[3][4].hasShip).toBe(true);
+});
+
+test('Should reject ships positioning next to each other', () => {
+    const gameboard = new Gameboard();
+    const board = gameboard.getBoard();
+    const shipOne = new Ship(4);
+    shipOne.setPosition(3,4);
+    const shipTwo = new Ship(3);
+    shipTwo.setPosition(3,5);
+    expect(gameboard.placeShip(shipOne)).toBe(true);
+    expect(gameboard.placeShip(shipTwo)).toBe(false);
+    expect(board[3][4].hasShip).toBe(true);
+    expect(board[3][5].hasShip).toBe(false);
 })
