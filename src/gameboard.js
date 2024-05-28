@@ -1,15 +1,17 @@
 import { Ship } from "./ships.js";
 
 class Gameboard {
-    constructor(height, width, shipSize) {
+    constructor(height = 20, width = 20) {
         this.height = height;
         this.width = width;
-        this.shipSize = shipSize;
     }
 
-    placeShip(x, y) {
+    placeShip(ship = new Ship()) {
+        const positionX = ship.getPositionX();
+        const positionY = ship.getPositionY();
+        const shipLength = ship.length;
 
-        if (x + this.shipSize > this.width || y > this.height) {
+        if (positionX + shipLength > this.width || positionY > this.height) {
             return false;
         };
             
