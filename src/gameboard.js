@@ -4,6 +4,7 @@ class Gameboard {
     constructor(height = 20, width = 20) {
         this.height = height;
         this.width = width;
+        this.spaceFilled = []
     }
 
     placeShip(ship = new Ship()) {
