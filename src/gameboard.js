@@ -18,6 +18,10 @@ class Gameboard {
         return this.board;
     }
 
+    isValidPosition(x, y) {
+        return x >= 0 && x < this.width && y >= 0 && y < this.height;
+    }
+
     placeShip(ship = new Ship()) {
         const positionX = ship.getPositionX();
         const positionY = ship.getPositionY();

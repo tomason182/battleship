@@ -12,6 +12,16 @@ test('Should have a height and a width', () => {
     expect(gameboard.width).toBe(6);
 });
 
+test('should be a valid position', () => {
+    const gameboard = new Gameboard();
+    expect(gameboard.isValidPosition(5, 6)).toBe(true);
+    expect(gameboard.isValidPosition(0, 0)).toBe(true);
+    expect(gameboard.isValidPosition(0, 20)).toBe(false);
+    expect(gameboard.isValidPosition(20, 0)).toBe(false);
+    expect(gameboard.isValidPosition(20,20)).toBe(false);
+    expect(gameboard.isValidPosition(19,19)).toBe(true);
+})
+
 test('Should be able to place a ship in an specific coordinate', () => {
     const gameboard = new Gameboard();
     const board = gameboard.getBoard();
