@@ -53,8 +53,7 @@ test('should not exceed the number of hits beyond the length', () => {
 
 test('Should return ship position', () => {
     const ship = new Ship(3);
-    ship.setPositionX(4);
-    ship.setPositionY(5);
+    ship.setPosition(4, 5);
     expect(ship.getPositionX()).toBe(4);
     expect(ship.getPositionY()).toBe(5);
 })

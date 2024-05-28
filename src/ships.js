@@ -7,18 +7,13 @@ class Ship {
         this.sunk = false;
     }
 
-    setPositionX(x) {
+    setPosition(x, y) {
         this._x = x;
-        return this._x;
+        this._y = y;
     }
 
     getPositionX() {
         return this._x;
-    }
-
-    setPositionY(y) {
-        this._y = y;
-        return this._y;
     }
 
     getPositionY() {
