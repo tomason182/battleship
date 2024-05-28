@@ -54,7 +54,9 @@ class Gameboard {
                     return false;
                 }
             }
-        }        
+        }
+        
+        return true;
     }
 
     placeShip(ship = new Ship()) {
@@ -63,22 +65,9 @@ class Gameboard {
         const shipLength = ship.length;
         const board = this.getBoard();
         
-        if (positionX + shipLength > this.width || positionY > this.height) {
+        if (!this.isPositionAvailable()) {
             return false;
-        };
-        
-        // Check for available space.
-        // Check before and after x coordinate.
-        if(board[positionX - 1][positionY].hasShip !== false || board[positionX + shipLength + 1][positionY].hasShip !== false) {
-            return false;
-        };
-        
-        // Check for available space within ship length.
-        for (let s = 0; s < shipLength; s ++) {
-            if (board[positionX + s][positionY].hasShip !== false) {
-                return false;
-            };
-        };     
+        }
         
         for (let s = 0; s < shipLength; s ++) {
             board[positionX + s][positionY].hasShip = true;
