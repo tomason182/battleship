@@ -26,8 +26,23 @@ class Gameboard {
         if (positionX + shipLength > this.width || positionY > this.height) {
             return false;
         };
-            
-        return true;
+        const board = this.getBoard();
+        // Check for available space.
+        // Check before and after x coordinate.
+        if(board[positionX -1][positionY].hasShip !== false || board[positionX + shipLength + 1].hasShip !== false) {
+            return false;
+        };
+        // Check for available space within ship length.
+        for (let s = 0; s < shipLength; s ++) {
+            if (board[positionX + s][positionY].hasShip !== false) {
+                return false;
+            };
+        };        
+        
+        for (let s = 0; s < shipLength; s ++) {
+            board[positionX + s][positionY].hasShip = true;
+        }
+
     }
 }
 
