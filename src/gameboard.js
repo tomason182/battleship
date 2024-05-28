@@ -43,8 +43,8 @@ class Gameboard {
             ];
 
             for (let i = 0; i < conditions.length; i ++) {
-                const a = i[0];
-                const b = i[1];
+                const a = conditions[i][0];
+                const b = conditions[i][1];
     
                 if (a < 0 || a >= this.width || b < 0 || b >= this.height) {
                     continue;
@@ -65,13 +65,15 @@ class Gameboard {
         const shipLength = ship.length;
         const board = this.getBoard();
         
-        if (!this.isPositionAvailable()) {
+        if (!this.isPositionAvailable(positionX, positionY, shipLength)) {
             return false;
         }
         
         for (let s = 0; s < shipLength; s ++) {
             board[positionX + s][positionY].hasShip = true;
         }
+
+        return true;
 
     }
 }

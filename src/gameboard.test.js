@@ -18,3 +18,16 @@ test('Should reject adding a ship out of the board', () => {
     ship.setPosition(21, 30);
     expect(gameboard.placeShip(ship)).toBe(false);
 })
+
+test('Should add a ship inside the board', () => {
+    const gameboard = new Gameboard();
+    const board = gameboard.getBoard();
+    const ship = new Ship(3);
+    ship.setPosition(3, 4);
+    gameboard.placeShip(ship);
+    expect(board[2][4].hasShip).toBe(false);
+    expect(board[3][4].hasShip).toBe(true);
+    expect(board[4][4].hasShip).toBe(true);
+    expect(board[5][4].hasShip).toBe(true);
+    expect(board[6][4].hasShip).toBe(false);
+})
