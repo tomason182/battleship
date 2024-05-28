@@ -14,10 +14,15 @@ test('Should have a height and a width', () => {
 
 test('Should be able to place a ship in an specific coordinate', () => {
     const gameboard = new Gameboard();
-    const shipOne = new Ship(3);
-    shipOne.setPositionX(4);
-    shipOne.setPositionY(6);
-    expect(gameboard.placeShip(shipOne)).toBe(true);
+    const board = gameboard.getBoard();
+    const ship = new Ship(3);
+    ship.setPositionX(4);
+    ship.setPositionY(6);
+    gameboard.placeShip(ship);
+    expect(board[4][6].hasShip).toBe(true);
+    expect(board[5][6].hasShip).toBe(true);
+    expect(board[6][6].hasShip).toBe(true);
+    expect(board[7][6].hasShip).toBe(false);
 })
 
 test('Should have specific border delimiters', () => {
