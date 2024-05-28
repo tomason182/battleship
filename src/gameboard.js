@@ -24,7 +24,37 @@ class Gameboard {
     }
 
     isPositionAvailable(x, y, length) {
-        
+        const board = this.getBoard();
+        if (!this.isValidPosition(x, y, length)) {
+            return false;
+        }
+
+        for (let l = x; l < x + length - 1; l ++) {
+            const conditions = [
+                [l,y],
+                [l - 1, y],
+                [l + 1, y],
+                [l, y - 1],
+                [l, y + 1],
+                [l - 1, y + 1],
+                [l + 1, y + 1],
+                [l - 1, y - 1],
+                [l + 1, y - 1]
+            ];
+
+            for (let i = 0; i < conditions.length; i ++) {
+                const a = i[0];
+                const b = i[1];
+    
+                if (a < 0 || a >= this.width || b < 0 || b >= this.height) {
+                    continue;
+                }
+    
+                if (board[a][b].hasShip !== false) {
+                    return false;
+                }
+            }
+        }        
     }
 
     placeShip(ship = new Ship()) {
