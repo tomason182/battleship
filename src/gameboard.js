@@ -76,6 +76,15 @@ class Gameboard {
         return true;
 
     }
+
+    receiveAttack(x,y) {
+        const board = this.getBoard();
+        if(board[x][y].hasShip === true) {
+            const ship = getShip(x, y) // getShip should be a function that retrieves the hitted ship.
+            ship.hit()
+        }
+
+    }
 }
 
 export {Gameboard}
