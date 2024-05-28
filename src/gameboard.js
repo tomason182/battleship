@@ -14,6 +14,10 @@ class Gameboard {
         }
     }
 
+    getBoard() {
+        return this.board;
+    }
+
     placeShip(ship = new Ship()) {
         const positionX = ship.getPositionX();
         const positionY = ship.getPositionY();
