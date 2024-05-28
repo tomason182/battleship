@@ -24,6 +24,6 @@ test('Should not place ships outside the gameboard', () => {
 
 test('The length of the ship should count when placing it.', () => {
     const ship = new Ship(4);
-    const gameboard = new Gameboard(10, 10);
+    const gameboard = new Gameboard(10, 10, ship.length);
     expect(gameboard.placeShip(8, 2, ship.length)).toBe(false);
 })
