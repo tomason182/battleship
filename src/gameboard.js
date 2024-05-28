@@ -18,8 +18,13 @@ class Gameboard {
         return this.board;
     }
 
-    isValidPosition(x, y) {
-        return x >= 0 && x < this.width && y >= 0 && y < this.height;
+    isValidPosition(x, y, length) {
+        // One unit of the length is contemplated in the x position.
+        return x >= 0 && x + length - 1 < this.width && y >= 0 && y < this.height;
+    }
+
+    isPositionAvailable(x, y, length) {
+        
     }
 
     placeShip(ship = new Ship()) {
