@@ -30,4 +30,18 @@ test('Should add a ship inside the board', () => {
     expect(board[4][4].hasShip).toBe(true);
     expect(board[5][4].hasShip).toBe(true);
     expect(board[6][4].hasShip).toBe(false);
+});
+
+test('Should add more than one ship on the board', () => {
+    const gameboard = new Gameboard();
+    const board = gameboard.getBoard();
+    const shipOne = new Ship(4);
+    shipOne.setPosition(3,4);
+    const shipTwo = new Ship(3);
+    shipTwo.setPosition(7,9);
+    expect(gameboard.placeShip(shipOne)).toBe(true);
+    expect(gameboard.placeShip(shipTwo)).toBe(true);
+    expect(board[3][4].hasShip).toBe(true);
+    expect(board[7][9].hasShip).toBe(true);
+
 })
