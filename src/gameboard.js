@@ -1,5 +1,3 @@
-import {default as Ship} from  "./ships.js";
-
 export default class Gameboard {
     constructor(height = 20, width = 20) {
         this.height = height;
@@ -78,7 +76,7 @@ export default class Gameboard {
     receiveAttack(x,y) {
         const board = this.getBoard();
         if(board[x][y].hasShip) {
-            const ship = board[x][y].shipObj; // getShip should be a function that retrieves the hitted ship.
+            const ship = board[x][y].shipObj;
             ship.hit();
             board[x][y].receiveAttack = true;
             if(ship.isSunk() === true) {
