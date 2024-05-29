@@ -1,6 +1,6 @@
-import { Ship } from "./ships.js";
+import defaultExport from  "./ships.js";
 
-class Gameboard {
+export default class Gameboard {
     constructor(height = 20, width = 20) {
         this.height = height;
         this.width = width;
@@ -98,5 +98,3 @@ class Gameboard {
         return this.sunkenShipCount;
     }
 }
-
-export {Gameboard}
