@@ -68,4 +68,13 @@ test('Should reject ships positioning next to each other', () => {
     expect(gameboard.placeShip(shipTwo)).toBe(false);
     expect(board[3][4].hasShip).toBe(true);
     expect(board[3][5].hasShip).toBe(false);
+});
+
+test('Ship should recieve hit when attack', () => {
+    const gameboard = new Gameboard();
+    const ship = new Ship(4,3,5);
+    gameboard.placeShip(ship);
+    gameboard.receiveAttack(4,5);
+    gameboard.receiveAttack(3,5);
+    expect(ship.getHits()).toBe(2);
 })

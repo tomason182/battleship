@@ -9,7 +9,7 @@ class Gameboard {
         for (let i = 0; i < this.width; i++) {
             this.board[i] = [];
             for (let j = 0; j  < this.height; j ++) {
-                this.board[i].push({hasShip: false, receiveAttack: false});
+                this.board[i].push({hasShip: false, receiveAttack: false, shipObj: null});
             }
         }
     }
@@ -71,6 +71,7 @@ class Gameboard {
         
         for (let s = 0; s < shipLength; s ++) {
             board[positionX + s][positionY].hasShip = true;
+            board[positionX + s][positionY].shipObj = ship;
         }
 
         return true;
@@ -80,8 +81,8 @@ class Gameboard {
     receiveAttack(x,y) {
         const board = this.getBoard();
         if(board[x][y].hasShip === true) {
-            const ship = getShip(x, y) // getShip should be a function that retrieves the hitted ship.
-            ship.hit()
+            const ship = board[x][y].shipObj; // getShip should be a function that retrieves the hitted ship.
+            ship.hit();
         }
 
     }
