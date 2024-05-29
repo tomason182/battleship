@@ -9,7 +9,7 @@ class Gameboard {
         for (let i = 0; i < this.width; i++) {
             this.board[i] = [];
             for (let j = 0; j  < this.height; j ++) {
-                this.board[i].push({hasShip: false, receiveAttack: false, shipObj: null});
+                this.board[i].push({hasShip: false, receiveAttack: false, shipObj: null, missingShot: false});
             }
         }
     }
@@ -83,6 +83,8 @@ class Gameboard {
         if(board[x][y].hasShip === true) {
             const ship = board[x][y].shipObj; // getShip should be a function that retrieves the hitted ship.
             ship.hit();
+        } else {
+            board[x][y].missingShot = true;
         }
 
     }
