@@ -1,8 +1,6 @@
-import { default as Player } from "./player.js";
-import {default as Ship } from "./ships.js";
 import { default as GameBoard } from "./gameboard.js";
 
-export default function gameController(playerOneName = "Player One", PlayerTwoName = "Computer") {
+export default function gameController(playerOneName = "Player One", playerTwoName = "Computer") {
 
   const ships = [
     {
@@ -29,11 +27,11 @@ export default function gameController(playerOneName = "Player One", PlayerTwoNa
 
   const players = [
   	{
-  	  player: new Player(playerOneName),
+  	  player: playerOneName,
       board: new GameBoard()
   	},
     {
-      player: new Player(PlayerTwoName),
+      player: playerTwoName,
       board: new GameBoard()
     }
   ];
@@ -56,6 +54,6 @@ export default function gameController(playerOneName = "Player One", PlayerTwoNa
   }
 
   const checkForVictory = (playerIndex) => {
-    return players[playerIndex].board.allShipsSunk();
+    return players[playerIndex].board.allShipSunk();
   }
 }
