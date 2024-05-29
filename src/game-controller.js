@@ -2,7 +2,7 @@ import { default as Player } from "./player.js";
 import {default as Ship } from "./ships.js";
 import { default as GameBoard } from "./gameboard.js";
 
-function gameController(playerOneName = "Player One", PlayerTwoName = "Computer") {
+export default function gameController(playerOneName = "Player One", PlayerTwoName = "Computer") {
 
   const ships = [
     {
