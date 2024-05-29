@@ -25,6 +25,10 @@ class Ship {
     }
 
     hit() {
+        if(this.sunk) {
+            return false;
+        }
+        
         this.hits += 1;
         if (this.hits >= this.length) {
             this.sunk = true;

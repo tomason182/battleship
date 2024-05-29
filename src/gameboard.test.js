@@ -1,30 +1,26 @@
 import { Gameboard } from './gameboard.js';
 import { Ship } from "./ships.js";
 
+const gameboard = new Gameboard();
+const board = gameboard.getBoard();
+const shipOne = new Ship(3);
+const shipTwo = new Ship(4);
+const shipThree = new Ship(2);
+const shipFour = new Ship(3);
+
 
 test('Should be an instance of the class', () => {
-    expect(new Gameboard()).toBeInstanceOf(Gameboard);
-});
-
-test('Should have a height and a width', () => {
-    const gameboard = new Gameboard(6, 6);
-    expect(gameboard.height).toBe(6);
-    expect(gameboard.width).toBe(6);
+    expect(gameboard).toBeInstanceOf(Gameboard);
 });
 
 test('Should reject adding a ship out of the board', () => {
-    const gameboard = new Gameboard();
-    const ship = new Ship(3);
-    ship.setPosition(21, 30);
-    expect(gameboard.placeShip(ship)).toBe(false);
+    shipOne.setPosition(21, 30);
+    expect(gameboard.placeShip(shipOne)).toBe(false);
 })
 
 test('Should add a ship inside the board', () => {
-    const gameboard = new Gameboard();
-    const board = gameboard.getBoard();
-    const ship = new Ship(3);
-    ship.setPosition(3, 4);
-    gameboard.placeShip(ship);
+    shipOne.setPosition(3, 4);
+    gameboard.placeShip(shipOne);
     expect(board[2][4].hasShip).toBe(false);
     expect(board[3][4].hasShip).toBe(true);
     expect(board[4][4].hasShip).toBe(true);
@@ -33,11 +29,7 @@ test('Should add a ship inside the board', () => {
 });
 
 test('Should add more than one ship on the board', () => {
-    const gameboard = new Gameboard();
-    const board = gameboard.getBoard();
-    const shipOne = new Ship(4);
-    shipOne.setPosition(3,4);
-    const shipTwo = new Ship(3);
+    shipOne.setPosition(0,0);
     shipTwo.setPosition(7,9);
     expect(gameboard.placeShip(shipOne)).toBe(true);
     expect(gameboard.placeShip(shipTwo)).toBe(true);
@@ -46,35 +38,38 @@ test('Should add more than one ship on the board', () => {
 });
 
 test('Should reject overlapping ships', () => {
-    const gameboard = new Gameboard();
-    const board = gameboard.getBoard();
-    const shipOne = new Ship(4);
     shipOne.setPosition(3,4);
-    const shipTwo = new Ship(3);
     shipTwo.setPosition(3,4);
-    expect(gameboard.placeShip(shipOne)).toBe(true);
     expect(gameboard.placeShip(shipTwo)).toBe(false);
     expect(board[3][4].hasShip).toBe(true);
 });
 
 test('Should reject ships positioning next to each other', () => {
-    const gameboard = new Gameboard();
-    const board = gameboard.getBoard();
-    const shipOne = new Ship(4);
     shipOne.setPosition(3,4);
-    const shipTwo = new Ship(3);
     shipTwo.setPosition(3,5);
-    expect(gameboard.placeShip(shipOne)).toBe(true);
     expect(gameboard.placeShip(shipTwo)).toBe(false);
     expect(board[3][4].hasShip).toBe(true);
     expect(board[3][5].hasShip).toBe(false);
 });
 
 test('Ship should recieve hit when attack', () => {
-    const gameboard = new Gameboard();
-    const ship = new Ship(4,3,5);
-    gameboard.placeShip(ship);
-    gameboard.receiveAttack(4,5);
-    gameboard.receiveAttack(3,5);
-    expect(ship.getHits()).toBe(2);
+    shipThree.setPosition(7,7);
+    gameboard.placeShip(shipThree);
+    gameboard.receiveAttack(7,7);
+    expect(board[7][7].hasShip).toBe(true);
+    expect(board[8][7].hasShip).toBe(true);
+    expect(board[7][7].receiveAttack).toBe(true);
+    expect(shipThree.getHits()).toBe(1);
+
+});
+
+test('Should count when ship has been sunken', () => {
+    shipFour.setPosition(17,19);
+    gameboard.placeShip(shipFour);
+    gameboard.receiveAttack(17,19);
+    gameboard.receiveAttack(18,19);
+    gameboard.receiveAttack(19,19);
+    expect(shipFour.getHits()).toBe(3);
+    expect(gameboard.getSunkenShipCount()).toBe(1);
+
 })

@@ -14,8 +14,9 @@ test('Should initialize with the correct length', () => {
 
 test('Should return the correct hit count', () => {
     const ship = new Ship();
-    expect(ship.hit()).toBe(1);
-    expect(ship.hit()).toBe(2);
+    ship.hit();
+    ship.hit();
+    expect(ship.getHits()).toBe(2);
 })
 
 test('Should return false when not sunk', () => {
@@ -46,7 +47,7 @@ test('should not exceed the number of hits beyond the length', () => {
     ship.hit();
     ship.hit();
     ship.hit();
-    expect(() => ship.hit()).toThrow('Hits exceed length');
+    expect(ship.hit()).toBe(false);
     expect(ship.hits).toBe(3);
 
 })

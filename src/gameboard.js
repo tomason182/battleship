@@ -81,12 +81,13 @@ class Gameboard {
 
     receiveAttack(x,y) {
         const board = this.getBoard();
-        if(board[x][y].hasShip === true) {
+        if(board[x][y].hasShip) {
             const ship = board[x][y].shipObj; // getShip should be a function that retrieves the hitted ship.
             ship.hit();
+            board[x][y].receiveAttack = true;
             if(ship.isSunk() === true) {
                 this.sunkenShipCount += 1;
-                return;
+                return true;
             }
         } else {
             board[x][y].receiveAttack = true;
