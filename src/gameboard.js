@@ -5,7 +5,7 @@ class Gameboard {
         this.height = height;
         this.width = width;
         this.board = [];
-        this.shipSunkCount = 0;
+        this.sunkenShipCount = 0;
 
         for (let i = 0; i < this.width; i++) {
             this.board[i] = [];
@@ -85,12 +85,16 @@ class Gameboard {
             const ship = board[x][y].shipObj; // getShip should be a function that retrieves the hitted ship.
             ship.hit();
             if(ship.isSunk() === true) {
-                this.isShipSunk += 1;
+                this.sunkenShipCount += 1;
                 return;
             }
         } else {
             board[x][y].receiveAttack = true;
         }
+    }
+
+    getSunkenShipCount() {
+        return this.sunkenShipCount;
     }
 }
 
