@@ -2,9 +2,7 @@ import { default as Player } from "./player.js";
 import {default as Ship } from "./ships.js";
 import { default as GameBoard } from "./gameboard.js";
 
-export default function gameController(playerOneName = "Player One", PlayerTwoName = "Computer") {
-    const playerOne = new Player(playerOneName);
-    const playerTwo = new Player(PlayerTwoName);
+function gameController(playerOneName = "Player One", PlayerTwoName = "Computer") {
 
     const ships = {
         carrier: new Ship(5),
@@ -13,5 +11,26 @@ export default function gameController(playerOneName = "Player One", PlayerTwoNa
         submarine: new Ship(3),
         destroyer: new Ship(2)        
     }
+
+    const players = [
+        {
+            player: new Player(playerOneName)
+        },
+        {
+            player: new Player(PlayerTwoName)
+        }
+    ];
+
+    let activePlayer = players[0];
+
+    const switchPlayerTurn = () => {
+        activePlayer = activePlayer === players[0] ? players[1] : players[0];
+    }
+
+    const getActivePlayer = () => activePlayer;
+
+
+
+
 
 }
