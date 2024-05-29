@@ -14,10 +14,12 @@ function gameController(playerOneName = "Player One", PlayerTwoName = "Computer"
 
     const players = [
         {
-            player: new Player(playerOneName)
+            player: new Player(playerOneName),
+            board: new GameBoard()
         },
         {
-            player: new Player(PlayerTwoName)
+            player: new Player(PlayerTwoName),
+            board: new GameBoard()
         }
     ];
 
@@ -29,8 +31,17 @@ function gameController(playerOneName = "Player One", PlayerTwoName = "Computer"
 
     const getActivePlayer = () => activePlayer;
 
+    const placePlayerShip = (playerIndex, ship, x, y) => {
+        return players[playerIndex].board.placeShip(ship, x, y);
+    }
 
+    const attack = (attackerIndex, x, y) => {
+        const opponentIndex = attackerIndex === 0 ? 1 : 0;
+        return players[opponentIndex].board.receiveAttack(x, y);
+    }
 
-
+    const checkForVictory = (playerIndex) => {
+        return players[playerIndex].board.allShipsSunk();
+    }
 
 }
