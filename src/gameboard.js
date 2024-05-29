@@ -1,7 +1,8 @@
 export default class Gameboard {
-    constructor(height = 20, width = 20) {
+    constructor(height = 20, width = 20, numberOfShips = 5) {
         this.height = height;
         this.width = width;
+        this.numberOfShips = numberOfShips;
         this.board = [];
         this.sunkenShipsCount = 0;
 
@@ -90,5 +91,12 @@ export default class Gameboard {
 
     getSunkenShipCount() {
         return this.sunkenShipsCount;
+    }
+
+    allShipSunk() {
+        if(this.sunkenShipsCount >= this.numberOfShips) {
+            return true;
+        }
+        return false;
     }
 }
