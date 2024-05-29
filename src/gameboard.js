@@ -1,16 +1,16 @@
-import defaultExport from  "./ships.js";
+import {default as Ship} from  "./ships.js";
 
 export default class Gameboard {
     constructor(height = 20, width = 20) {
         this.height = height;
         this.width = width;
         this.board = [];
-        this.sunkenShipCount = 0;
+        this.sunkenShipsCount = 0;
 
         for (let i = 0; i < this.width; i++) {
             this.board[i] = [];
             for (let j = 0; j  < this.height; j ++) {
-                this.board[i].push({hasShip: false, receiveAttack: false, shipObj: null});
+                this.board[i].push({hasShip: false, receiveAttack: false, ship: null});
             }
         }
     }
@@ -60,23 +60,19 @@ export default class Gameboard {
         return true;
     }
 
-    placeShip(ship = new Ship()) {
-        const positionX = ship.getPositionX();
-        const positionY = ship.getPositionY();
-        const shipLength = ship.length;
+    placeShip(ship, x, y) {
+        const shipLength = ship.getLength();
         const board = this.getBoard();
         
-        if (!this.isPositionAvailable(positionX, positionY, shipLength)) {
+        if (!this.isPositionAvailable(x, y, shipLength)) {
             return false;
         }
-        
+
         for (let s = 0; s < shipLength; s ++) {
-            board[positionX + s][positionY].hasShip = true;
-            board[positionX + s][positionY].shipObj = ship;
+            board[x + s][y].hasShip = true;
+            board[x + s][y].ship = ship;
         }
-
         return true;
-
     }
 
     receiveAttack(x,y) {
@@ -95,6 +91,6 @@ export default class Gameboard {
     }
 
     getSunkenShipCount() {
-        return this.sunkenShipCount;
+        return this.sunkenShipsCount;
     }
 }
