@@ -1,27 +1,31 @@
 export default class Ship {
     constructor(length) {
-        this.length = length;
-        this.hits = 0;
-        this.sunk = false;
+        this._length = length;
+        this._hits = 0;
+        this._sunk = false;
     }
 
     getHits() {
-        return this.hits;
+        return this._hits;
     }
 
     hit() {
-        if(this.sunk) {
+        if(this._sunk) {
             return false;
         }
         
-        this.hits += 1;
-        if (this.hits >= this.length) {
-            this.sunk = true;
+        this._hits += 1;
+        if (this._hits >= this._length) {
+            this._sunk = true;
             return;
         }
     }
 
     isSunk() {
-        return this.sunk;
+        return this._sunk;
+    }
+
+    getLength() {
+        return this._length;
     }
 }
