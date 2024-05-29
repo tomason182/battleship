@@ -20,6 +20,10 @@ class Ship {
         return this._y;
     }
 
+    getHits() {
+        return this.hits;
+    }
+
     hit() {
         if (this.hits >= this.length) {
             throw new Error ('Hits exceed length')
