@@ -25,18 +25,13 @@ class Ship {
     }
 
     hit() {
-        if (this.hits >= this.length) {
-            throw new Error ('Hits exceed length')
-        }
         this.hits += 1;
-        return this.hits;
+        if (this.hits >= this.length) {
+            this.sunk = true;
+        }
     }
 
     isSunk() {
-        if (this.hits >= this.length) {
-            return true;
-        }
-
         return this.sunk;
     }
 }
