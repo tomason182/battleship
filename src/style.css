@@ -47,7 +47,19 @@ body {
 
 .game-container {
     border: 1px solid red;
+    display: grid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12%;
     width: 100%;
     flex: 4;
+}
+
+.left-grid,
+.right-grid {
+    border: 1px solid blue;
+    aspect-ratio: 1 / 1;
+    width: 25%;
 }
 
