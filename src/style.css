@@ -47,7 +47,6 @@ body {
 
 .game-container {
     border: 1px solid red;
-    display: grid;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,3 +62,18 @@ body {
     width: 25%;
 }
 
+.battleship-table {
+    width: 100%;
+    height: 100%;
+    background-color: lightblue;
+    border-collapse: collapse;
+}
+
+.battleship-table > tbody >.table-row {
+    width: 100%;
+    border: 1px solid #ccc
+}
+
+.battleship-table tbody > .table-row > .cell {
+    border: 1px solid black;
+}
