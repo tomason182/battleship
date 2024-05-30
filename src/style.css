@@ -31,9 +31,18 @@ body {
    margin: 0;
 }
 
-.message {
+.displayer {
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 3;
+}
+
+.message {
+    border: 1px solid red;
+    width: 80%;
+    height: 75%;
 }
 
 .game-container {
