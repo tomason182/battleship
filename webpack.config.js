@@ -4,10 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        screenController: './src/screen-controller.js',
-        gameController: './src/game-controller.js',
-        gameboard: './src/gameboard.js',
-        ships: './src/ships.js'
+        main: './src/main.js'
     },
     devtool: 'inline-source-map',
     devServer: {
@@ -17,12 +14,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'BattleShip',
             template: './src/index.html'
-        })
+        }),
     ],
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        clean: true,
+    optimization: {
+        runtimeChunk: 'single',
     },
     module: {
         rules: [
@@ -36,8 +31,13 @@ module.exports = {
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
-                type: 'asset/resource'
+                type: 'asset/resource',
             }
         ],
+    },
+    output: {
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
 };

@@ -1,8 +1,12 @@
 {
+  "name": "BattleShip",
+  "version": "1.0.0",
+  "description": "",
   "private": true,
   "scripts": {
     "test": "jest",
-    "build": "webpack"
+    "build": "webpack",
+    "start": "webpack serve --open"
   },
   "keywords": [],
   "author": "",
