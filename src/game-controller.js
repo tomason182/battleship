@@ -1,6 +1,6 @@
 import { default as GameBoard } from "./gameboard.js";
 
-export default function gameController(playerOneName = "Player One", playerTwoName = "Computer") {
+function gameController(playerOneName = "Player One", playerTwoName = "Computer") {
 
   const ships = [
     {
@@ -56,4 +56,19 @@ export default function gameController(playerOneName = "Player One", playerTwoNa
   const checkForVictory = (playerIndex) => {
     return players[playerIndex].board.allShipSunk();
   }
+
+  const getPlayerBoard = (playerIndex) => {
+    return players[playerIndex].board.getBoard();
+  }
+
+  return {
+    switchPlayerTurn,
+    getActivePlayer,
+    placePlayerShip,
+    attack,
+    checkForVictory,
+    getPlayerBoard
+  }
 }
+
+export { gameController };

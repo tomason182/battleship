@@ -1,8 +1,6 @@
-import './style.css';
+import "./style.css";
+import { default as screenController } from "./screen-controller.js"
 
-function working() {
-    console.log("working Now");
-}
 
-working();
+screenController();
 

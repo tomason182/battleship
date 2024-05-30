@@ -1,10 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { default: gameController } = require('./src/game-controller');
 
 module.exports = {
     mode: 'development',
     entry: {
-        main: './src/main.js'
+        main: './src/main.js',
+        screenController: './src/screen-controller',
+        gameController: './src/game-controller'
     },
     devtool: 'inline-source-map',
     devServer: {
