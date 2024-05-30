@@ -1,5 +1,5 @@
 export default class Gameboard {
-    constructor(height = 20, width = 20, numberOfShips = 5) {
+    constructor(height = 10, width = 10, numberOfShips = 5) {
         this.height = height;
         this.width = width;
         this.numberOfShips = numberOfShips;
