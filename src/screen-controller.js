@@ -21,8 +21,9 @@ export default function screenController() {
             row.forEach((cell, indexColumn) => {
                 const cellButton = createCellElement("td", "cell", indexRow, indexColumn);
                 cellButton.dataset.hasShip = cell.hasShip;
-                playerOneGrid.appendChild(cellButton);
+                tableRow.appendChild(cellButton);
             });
+            playerOneGrid.appendChild(tableRow);
         });
 
         playerTwoBoard.forEach((row, indexRow) => {
@@ -31,8 +32,9 @@ export default function screenController() {
             row.forEach((cell, indexColumn) => {
                 const cellButton = createCellElement("td", "cell", indexRow, indexColumn);
                 cellButton.dataset.hasShip = cell.hasShip;
-                playerTwoGrid.appendChild(cellButton);
+                tableRow.appendChild(cellButton);
             });
+            playerTwoGrid.appendChild(tableRow);
         });    
     }
 
